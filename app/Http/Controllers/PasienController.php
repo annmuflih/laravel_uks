@@ -40,12 +40,16 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        Pasien::create([
+        $pasien = Pasien::create([
             'nama_pasien' => $request->nama_pasien,
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'kelas' => $request->kelas,
             'id_jabatan' => $request->id_jabatan,
+        ]);
+        RekamMedis::create([
+            'id_pasien' => $pasien->id,
+            'id_riwayat-penyakit' => 0,
         ]);
         return redirect('/pasien');
     }

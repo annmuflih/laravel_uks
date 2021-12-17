@@ -90,8 +90,8 @@ Data Pasien
                                             <label class="form-label">Jenis Kelamin</label>
                                             <select name="jenis_kelamin" required="required" class="form-control">
                                                 <option value="">-- Pilih Jenis Kelamin --</option>
-                                                <option value="laki-laki">Laki-Laki</option>
-                                                <option value="perempuan">Perempuan</option>
+                                                <option value="Laki-Laki">Laki-Laki</option>
+                                                <option value="Perempuan">Perempuan</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
