@@ -110,7 +110,7 @@ Data Pasien
                                         <div class="form-group">
                                             <label class="form-label">Jabatan</label>
                                             <select name="id_jabatan" required="required" class="form-control">
-                                                <option value="">-- Pilih Status --</option>
+                                                <option value="">-- Pilih Jabatan --</option>
                                                 @foreach ($jabatan as $row)
                                                     <option value="{{$row->id}}">{{$row->nama_jabatan}}</option>
                                                 @endforeach

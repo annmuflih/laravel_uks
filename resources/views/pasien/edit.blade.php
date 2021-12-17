@@ -34,8 +34,8 @@ Edit Data Pasien
                                 <label class="form-label">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" required="required" class="form-control">
                                     <option value="{{$pasien->jenis_kelamin}}">{{$pasien->jenis_kelamin}}</option>
-                                    <option value="laki-laki">Laki-Laki</option>
-                                    <option value="perempuan">Perempuan</option>
+                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -43,12 +43,12 @@ Edit Data Pasien
                                 <select name="kelas" required="required" class="form-control">
                                     <option value="{{$pasien->kelas}}">{{$pasien->kelas}}</option>
                                     <option value="Non-Murid">Non Murid</option>
-                                    <option value="smp_vii">SMP VII</option>
-                                    <option value="smp_viii">SMP VIII</option>
-                                    <option value="smp_ix">SMP IX</option>
-                                    <option value="smk_x">SMK X</option>
-                                    <option value="smk_xi">SMK XI</option>
-                                    <option value="smk_xii">SMK XII</option>
+                                    <option value="SMP VII">SMP VII</option>
+                                    <option value="SMP VIII">SMP VIII</option>
+                                    <option value="SMP IX">SMP IX</option>
+                                    <option value="SMK X">SMK X</option>
+                                    <option value="SMK XI">SMK XI</option>
+                                    <option value="SMK XII">SMK XII</option>
                                 </select>
                             </div>
                             <div class="form-group">
