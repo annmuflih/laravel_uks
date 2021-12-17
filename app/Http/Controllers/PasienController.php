@@ -47,10 +47,6 @@ class PasienController extends Controller
             'kelas' => $request->kelas,
             'id_jabatan' => $request->id_jabatan,
         ]);
-        RekamMedis::create([
-            'id_pasien' => $pasien->id,
-            'id_riwayat-penyakit' => 0,
-        ]);
         return redirect('/pasien');
     }
 
