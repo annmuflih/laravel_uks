@@ -95,6 +95,8 @@ class PetugasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $petugas = Petugas::find($id);
+        $petugas->delete();
+        return back();
     }
 }
