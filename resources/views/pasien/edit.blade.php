@@ -28,7 +28,7 @@ Edit Data Pasien
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Tanggal Lahir</label>
-                                <input type="date" name="fungsi_pasien" value="{{$pasien->tanggal_lahir}}" required='required' class="form-control">
+                                <input type="date" name="tanggal_lahir" value="{{$pasien->tanggal_lahir}}" required='required' class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Jenis Kelamin</label>
