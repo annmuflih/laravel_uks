@@ -54,7 +54,7 @@ Edit Data Pasien
                             <div class="form-group">
                                 <label class="form-label">Jabatan</label>
                                 <select name="id_jabatan" required="required" class="form-control">
-                                    <option value="{{$pasien->id_jabatan}}">{{$pasien->id_jabatan}}</option>
+                                    <option value="{{$pasien->id_jabatan}}">{{$pasien->jabatan->nama_jabatan}}</option>
                                     @foreach ($jabatan as $row)
                                         <option value="{{$row->id}}">{{$row->nama_jabatan}}</option>
                                     @endforeach
