@@ -41,6 +41,7 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $pasien = Pasien::create([
+            'id' => $request->id,
             'nama_pasien' => $request->nama_pasien,
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
