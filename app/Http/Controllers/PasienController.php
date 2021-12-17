@@ -18,7 +18,6 @@ class PasienController extends Controller
     {
         $pasien = Pasien::orderBy('created_at', 'desc')->paginate(10);
         $jabatan = Jabatan::all();
-        $jabatan = Jabatan::all();
         // return dd($pasien, $jabatan);
         return view('pasien.index', compact('pasien', 'jabatan'));
     }
@@ -41,9 +40,13 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $input['tanggal_lahir'] = date('Y-m-d');
-        $pasien = Pasien::create($input);
+        $pasien = Pasien::create([
+            'nama_pasien' => $request->nama_pasien,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'kelas' => $request->kelas,
+            'id_jabatan' => $request->id_jabatan,
+        ]);
         RekamMedis::create([
             'id_pasien' => $pasien->id,
             'id_riwayat-penyakit' => 0,
