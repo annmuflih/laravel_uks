@@ -11,6 +11,9 @@ Dashboard
 @if(Auth::user()->role == 'admin')
 @section('content')
 <div class="container-fluid" id="container-wrapper">
+    <script>
+        console.log(@json($pasiens))
+    </script>
     <div class="row mb-3">
       <!-- Jumlah Data Pasien -->
       <div class="col-xl-3 col-md-6 mb-4">

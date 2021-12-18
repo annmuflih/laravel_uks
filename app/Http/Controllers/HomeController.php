@@ -48,11 +48,18 @@ class HomeController extends Controller
         $a = 1;
 
         //chart
-        $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
-                ->whereYear('created_at', date('Y'))
-                //"DATE_FORMAT(created_at, '%m-%Y')"
-                ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
-                ->pluck('count');
+ //       $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
+ //               ->whereYear('created_at', date('Y'))
+ //               //"DATE_FORMAT(created_at, '%m-%Y')"
+ //               ->groupBy(DB::raw("month(created_at)"))
+ //              ->pluck('count');
+
+
+                  $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
+                            ->whereYear('created_at', date('Y'))
+                            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+                            ->pluck('count');
+
 
         $months = Pasien::select(DB::raw("Month(created_at) as month"))
                 ->whereYear('created_at', date('Y'))
@@ -78,6 +85,7 @@ class HomeController extends Controller
             'datas',
             'i',
             'a',
+            'pasiens'
         ));
     }
 }
