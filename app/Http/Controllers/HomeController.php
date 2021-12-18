@@ -54,19 +54,21 @@ class HomeController extends Controller
  //               ->groupBy(DB::raw("month(created_at)"))
  //              ->pluck('count');
 
- // DB::select("select created_at::date, COUNT(id) as views from
- //post where user_id = ".auth()->user()->id." group by created_at::date
- //order by created_at desc Limit 10");
-
                   $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
                             ->whereYear('created_at', date('Y'))
+                            //PostgreSQL
                             ->groupBy(DB::raw("to_char(created_at, '%m')"))
+                            //MySQL
+                            //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
                             ->pluck('count');
 
 
         $months = Pasien::select(DB::raw("Month(created_at) as month"))
                 ->whereYear('created_at', date('Y'))
-                ->groupBy(DB::raw("month(created_at)"))
+                //PostgreSQL
+                ->groupBy(DB::raw("to_char(created_at, '%m')"))
+                //MySQL
+                //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
                 ->pluck('month');
 
         $datas = [0,0,0,0,0,0,0,0,0,0,0,0];
