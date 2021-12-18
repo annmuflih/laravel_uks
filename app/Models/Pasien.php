@@ -21,13 +21,4 @@ class Pasien extends Model
     {
         return $this->hasMany(RiwayatPenyakit::class);
     }
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'created_at' => 'date',
-    ];
 }
