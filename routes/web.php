@@ -32,8 +32,7 @@ Route::any('/register', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::resource('/info', InfoController::class)->middleware('auth');
 Route::resource('/petugas', PetugasController::class)->middleware('auth');
