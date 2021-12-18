@@ -63,7 +63,12 @@ class HomeController extends Controller
                             ->pluck('count');
 
 
-        $months = Pasien::select(DB::raw("Month(created_at) as month"))
+        $months = Pasien::select(
+            //PostgreSQL
+            DB::raw("to_char(created_at, '%m') as month")
+            //MySQL
+            //DB::raw("Month(created_at) as month")
+            )
                 ->whereYear('created_at', date('Y'))
                 //PostgreSQL
                 ->groupBy(DB::raw("to_char(created_at, '%m')"))
