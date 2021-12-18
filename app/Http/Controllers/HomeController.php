@@ -75,7 +75,7 @@ class HomeController extends Controller
                 //MySQL
                 //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
                 ->pluck('month');
-dd($pasiens);
+dd($months);
         $datas = [0,0,0,0,0,0,0,0,0,0,0,0];
         foreach ($months as $index => $month)
         {
