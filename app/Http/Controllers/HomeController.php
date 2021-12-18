@@ -65,7 +65,7 @@ class HomeController extends Controller
 
         $months = Pasien::select(
             //PostgreSQL
-            DB::raw("to_char(created_at, '%m')::integer as month")
+            DB::raw("to_char(created_at, '%m') as month")
             //MySQL
             //DB::raw("Month(created_at) as month")
             )
@@ -75,7 +75,7 @@ class HomeController extends Controller
                 //MySQL
                 //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
                 ->pluck('month');
-
+dd($months);
         $datas = [0,0,0,0,0,0,0,0,0,0,0,0];
         foreach ($months as $index => $month)
         {
