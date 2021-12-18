@@ -57,7 +57,7 @@ class HomeController extends Controller
                   $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
                             ->whereYear('created_at', date('Y'))
                             //PostgreSQL
-                            ->groupBy(DB::raw("to_char(created_at, '%m')"))
+                            ->groupBy(DB::raw("to_char(created_at, 'mm')"))
                             //MySQL
                             //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
                             ->pluck('count');
@@ -75,7 +75,7 @@ class HomeController extends Controller
                 //MySQL
                 //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
                 ->pluck('month');
-dd($months);
+//dd($months);
         $datas = [0,0,0,0,0,0,0,0,0,0,0,0];
         foreach ($months as $index => $month)
         {
