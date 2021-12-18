@@ -50,7 +50,8 @@ class HomeController extends Controller
         //chart
         $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
                 ->whereYear('created_at', date('Y'))
-                ->groupBy(DB::raw("month(created_at)"))->distinct()
+                //"DATE_FORMAT(created_at, '%m-%Y')"
+                ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
                 ->pluck('count');
 
         $months = Pasien::select(DB::raw("Month(created_at) as month"))
