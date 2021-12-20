@@ -38,7 +38,7 @@ Petugas UKS
                                 <td>{{$row->nama_petugas}}</td>
                                 <td>{{($row->nomor_induk_petugas)}}</td>
                                 <td>
-                                    <form action="{{route('petugas.destroy', $row->id)}}" onsubmit="return confirm('Hapus petugas {{$row->judul_petugas}} ?')" method="post">
+                                    <form action="{{route('petugas.destroy', $row->id)}}" onsubmit="return confirm('Hapus petugas {{$row->nama_petugas}} ?')" method="post">
                                     @csrf
                                     @method('delete')
                                         <a href="{{route('petugas.show', $row->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i> Detail</a>

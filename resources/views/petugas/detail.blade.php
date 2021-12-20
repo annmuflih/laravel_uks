@@ -20,7 +20,7 @@ Detail Petugas UKS
                 <div class="card-body">
                     <table class="table table-hover">
                         <tr>
-                            <th>Nmaa Petugas</th>
+                            <th>Nama Petugas</th>
                             <th>: {{$petugas->nama_petugas}}</th>
                         </tr>
                         <tr>
