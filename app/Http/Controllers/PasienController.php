@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jabatan;
 use App\Models\Pasien;
 use App\Models\RekamMedis;
+use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
@@ -108,9 +109,9 @@ class PasienController extends Controller
     public function destroy($id)
     {
         $pasien = Pasien::find($id);
-        $rekam_medis = RekamMedis::find($id);
+        $riwayat_penyakit = RiwayatPenyakit::find($id);
         $pasien->delete();
-        $rekam_medis->delete();
+        $riwayat_penyakit->delete();
         return back();
     }
 }
