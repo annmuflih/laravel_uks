@@ -37,7 +37,7 @@ Riwayat Penyakit
                             @foreach ($riwayat_penyakit as $row)
                             <tr class="text-center">
                                 <td>{{$loop->iteration + ($riwayat_penyakit->perpage() * ($riwayat_penyakit->currentpage() -1)) }}</td>
-                                <td>{{$row->id_pasien}}</td>
+                                <td>{{$row->pasien->nama_pasien}}</td>
                                 <td>{{$row->keluhan}}</td>
                                 <td>{{$row->tindakan}}</td>
                                 <td class="">
