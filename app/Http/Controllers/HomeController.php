@@ -54,13 +54,13 @@ class HomeController extends Controller
  //               ->groupBy(DB::raw("month(created_at)"))
  //              ->pluck('count');
 
-                  $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
-                            ->whereYear('created_at', date('Y'))
-                            //PostgreSQL
-                            ->groupBy(DB::raw("to_char(created_at, 'mm')"))
-                            //MySQL
-                            //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
-                            ->pluck('count');
+        $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
+            ->whereYear('created_at', date('Y'))
+            //PostgreSQL
+            ->groupBy(DB::raw("to_char(created_at, 'mm')"))
+            //MySQL
+            //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+            ->pluck('count');
 
 
         $months = Pasien::select(
@@ -69,13 +69,14 @@ class HomeController extends Controller
             //MySQL
             //DB::raw("Month(created_at) as month")
             )
-                ->whereYear('created_at', date('Y'))
-                //PostgreSQL
-                ->groupBy(DB::raw("to_char(created_at, 'mm')"))
-                //MySQL
-                //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
-                ->pluck('month');
-//dd($months);
+            ->whereYear('created_at', date('Y'))
+            //PostgreSQL
+            ->groupBy(DB::raw("to_char(created_at, 'mm')"))
+            //MySQL
+            //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+            ->pluck('month');
+
+        //dd($months);
         $datas = [0,0,0,0,0,0,0,0,0,0,0,0];
         foreach ($months as $index => $month)
         {
