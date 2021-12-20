@@ -108,7 +108,9 @@ class PasienController extends Controller
     public function destroy($id)
     {
         $pasien = Pasien::find($id);
+        $rekam_medis = RekamMedis::find($id);
         $pasien->delete();
+        $rekam_medis->delete();
         return back();
     }
 }
