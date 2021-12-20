@@ -55,7 +55,7 @@
                         <hr>
                         <div class="text-center">
                             <span>Visitor ? <br> Login with <br>
-                            Email : visitor@mail.com
+                            Email : visitor@gmail.com
                             Password : 1234</span>
                         </div>
                     </form>
