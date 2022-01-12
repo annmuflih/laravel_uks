@@ -48,32 +48,51 @@ class HomeController extends Controller
         $a = 1;
 
         //chart
- //       $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
- //               ->whereYear('created_at', date('Y'))
- //               //"DATE_FORMAT(created_at, '%m-%Y')"
- //               ->groupBy(DB::raw("month(created_at)"))
- //              ->pluck('count');
+    //    $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
+    //            ->whereYear('created_at', date('Y'))
+    //            //"DATE_FORMAT(created_at, '%m-%Y')"
+    //            ->groupBy(DB::raw("month(created_at)"))
+    //           ->pluck('count');
+
+        // $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
+        //     ->whereYear('created_at', date('Y'))
+        //     //PostgreSQL
+        //     ->groupBy(DB::raw("to_char(created_at, 'mm')"))
+        //     //MySQL
+        //     //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+        //     ->pluck('count');
+
+
+        // $months = Pasien::select(
+        //     //PostgreSQL
+        //     DB::raw("to_char(created_at, 'mm') as month")
+        //     //MySQL
+        //     //DB::raw("Month(created_at) as month")
+        //     )
+        //     ->whereYear('created_at', date('Y'))
+        //     //PostgreSQL
+        //     ->groupBy(DB::raw("to_char(created_at, 'mm')"))
+        //     //MySQL
+        //     //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+        //     ->pluck('month');
+
+        // $months = Pasien::select(
+        //     //MySQL
+        //     DB::raw("Month(created_at) as month")
+        //     )
+        //     ->whereYear('created_at', date('Y'))
+        //     //MySQL
+        //     ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+        //     ->pluck('month');
 
         $pasiens = Pasien::select(DB::raw("COUNT(*) as count"))
-            ->whereYear('created_at', date('Y'))
-            //PostgreSQL
-            ->groupBy(DB::raw("to_char(created_at, 'mm')"))
-            //MySQL
-            //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
-            ->pluck('count');
+               ->whereYear('created_at', date('Y'))
+               ->groupBy(DB::raw("month(created_at)"))
+               ->pluck('count');
 
-
-        $months = Pasien::select(
-            //PostgreSQL
-            DB::raw("to_char(created_at, 'mm') as month")
-            //MySQL
-            //DB::raw("Month(created_at) as month")
-            )
+        $months = Pasien::select(DB::raw("Month(created_at) as month"))
             ->whereYear('created_at', date('Y'))
-            //PostgreSQL
-            ->groupBy(DB::raw("to_char(created_at, 'mm')"))
-            //MySQL
-            //->groupBy(DB::raw("DATE_FORMAT(created_at, '%m')"))
+            ->groupBy(DB::raw("Month(created_at)"))
             ->pluck('month');
 
         //dd($months);

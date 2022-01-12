@@ -47,3 +47,5 @@ Route::get('/cari-rekam-medis', [RekamMedisController::class, 'search'])->name('
 
 Route::get('/rawat', [StatusController::class, 'index_rawat'])->middleware('auth');
 Route::get('/rawat-jalan', [StatusController::class, 'index_rawat_jalan'])->middleware('auth');
+
+Route::get('/exportpasien', [PasienController::class, 'pasienExport'])->middleware('auth');

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PasienExport;
 use App\Models\Jabatan;
 use App\Models\Pasien;
 use App\Models\RekamMedis;
 use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PasienController extends Controller
 {
@@ -21,6 +24,11 @@ class PasienController extends Controller
         $jabatan = Jabatan::all();
         // return dd($pasien, $jabatan);
         return view('pasien.index', compact('pasien', 'jabatan'));
+    }
+
+    public function pasienExport()
+    {
+        return Excel::download(new PasienExport, 'Pasien.xlsx');
     }
 
     /**
