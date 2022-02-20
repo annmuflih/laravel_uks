@@ -41,7 +41,7 @@ Detail Data Pasien
                         </tr>
                         <tr>
                             <th>Dibuat</th>
-                            <th>: {{($pasien->created_at->format('d-m-Y / H:m:s'))}}</th>
+                            <th>: {{($pasien->created_at->format('d M Y / H:m:s'))}}</th>
                         </tr>
                     </table>
                 </div>

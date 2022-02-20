@@ -16,4 +16,9 @@ class Jabatan extends Model
     {
         return $this->hasMany(Pasien::class);
     }
+
+    public function medical_check_up()
+    {
+        return $this->hasMany(MedicalCheckUp::class);
+    }
 }

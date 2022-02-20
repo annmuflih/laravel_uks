@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
 @section('tab')
-Detail Riwayat Penyakit
+Detail Rekam Medis
 @endsection
 
 @section('title')
-Detail Riwayat Penyakit
+Detail Rekam Medis
 @endsection
 
 @section('content')
@@ -15,10 +15,10 @@ Detail Riwayat Penyakit
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    @empty($riwayat_penyakit)
-                        Detail Riwayat Penyakit Pasien <b style="color: black"></b>
+                    @empty($data_sakit)
+                        Detail Rekam Medis Pasien <b style="color: black"></b>
                     @else
-                        Detail Riwayat Penyakit Pasien <b style="color: black">{{$riwayat_penyakit->pasien->nama_pasien}}</b>
+                        Detail Rekam Medis Pasien <b style="color: black">{{$data_sakit->pasien->nama_pasien}}</b>
                     @endempty
                 </div>
                 <div class="card-body">

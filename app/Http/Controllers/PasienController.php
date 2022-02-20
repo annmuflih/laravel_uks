@@ -6,10 +6,13 @@ use App\Exports\PasienExport;
 use App\Models\Jabatan;
 use App\Models\Pasien;
 use App\Models\RekamMedis;
-use App\Models\RiwayatPenyakit;
+use App\Models\DataSakit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Imports\PasienImport;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PasienController extends Controller
 {
@@ -31,6 +34,13 @@ class PasienController extends Controller
         return Excel::download(new PasienExport, 'Pasien.xlsx');
     }
 
+    public function pasienImport (Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new PasienImport, $file);
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -49,6 +59,18 @@ class PasienController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'nama_pasien' => "unique:pasien,nama_pasien",
+        ]);
+
+        if ($validator->fails()) {
+            Alert::error('Maaf', 'Data yang anda masukkan tidak sesuai/kurang lengkap. Mohon lengkapi kembali');
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $pasien = Pasien::create([
             'nama_pasien' => $request->nama_pasien,
             'tanggal_lahir' => $request->tanggal_lahir,
@@ -56,10 +78,12 @@ class PasienController extends Controller
             'kelas' => $request->kelas,
             'id_jabatan' => $request->id_jabatan,
         ]);
+
         RekamMedis::create([
             'id_pasien' => $pasien->id,
-            'id_riwayat-penyakit' => 0,
+            'id_data-sakit' => 0,
         ]);
+        Alert::success('Berhasil', 'Pasien berhasil ditambahkan');
         return redirect('/pasien');
     }
 
@@ -117,9 +141,9 @@ class PasienController extends Controller
     public function destroy($id)
     {
         $pasien = Pasien::find($id);
-        $riwayat_penyakit = RiwayatPenyakit::find($id);
+        $data_sakit = DataSakit::find($id);
         $pasien->delete();
-        $riwayat_penyakit->delete();
+        $data_sakit->delete();
         return back();
     }
 }

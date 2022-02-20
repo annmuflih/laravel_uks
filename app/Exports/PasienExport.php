@@ -12,6 +12,6 @@ class PasienExport implements FromCollection
     */
     public function collection()
     {
-        return Pasien::all();
+        return Pasien::where('nama_pasien', 'Humam')->get();
     }
 }

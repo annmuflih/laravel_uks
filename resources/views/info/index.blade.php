@@ -43,13 +43,13 @@ Info UKS
                                     <form action="{{route('info.destroy', $row->id)}}" onsubmit="return confirm('Hapus info {{$row->judul_info}} ?')" method="post">
                                     @csrf
                                     @method('delete')
-                                        <a href="{{route('info.show', $row->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
+                                        <a href="{{route('info.show', $row->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                         @if(Auth::user()->role == 'admin')
-                                        <a href="{{route('info.edit', $row->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        <a href="{{route('info.edit', $row->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                         @elseif (Auth::user()->role == 'petugas')
-                                        <a href="{{route('info.edit', $row->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        <a href="{{route('info.edit', $row->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                         @else
                                         @endif
                                     </form>

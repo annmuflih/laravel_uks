@@ -39,8 +39,8 @@ Data Jabatan
                                     <form action="{{route('jabatan.destroy', $row->id)}}" onsubmit="return confirm('Hapus jabatan {{$row->nama_jabatan}} ?')" method="post">
                                     @csrf
                                     @method('delete')
-                                        <a href="{{route('jabatan.edit', $row->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                                        <a href="{{route('jabatan.edit', $row->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

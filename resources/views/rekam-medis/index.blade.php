@@ -48,7 +48,7 @@ Rekam Medis
                                 <td>{{$row->jenis_kelamin}}</td>
                                 <td>{{$row->jabatan->nama_jabatan}}</td>
                                 <td>
-                                    <a href="{{route('rekam-medis.detail', $row->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i> Detail</a>
+                                    <a href="{{route('rekam-medis.detail', $row->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                             @endforeach

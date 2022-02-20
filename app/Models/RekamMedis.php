@@ -17,9 +17,9 @@ class RekamMedis extends Model
         return $this->belongsTo(Pasien::class, 'id_pasien', 'id');
     }
 
-    public function riwayat_penyakit()
+    public function data_sakit()
     {
-        return $this->belongsTo(RiwayatPenyakit::class, 'id_riwayat-penyakit', 'id');
+        return $this->belongsTo(DataSakit::class, 'id_data-sakit', 'id');
     }
 
 

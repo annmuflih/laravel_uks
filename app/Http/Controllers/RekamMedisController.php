@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use App\Models\RekamMedis;
-use App\Models\RiwayatPenyakit;
+use App\Models\DataSakit;
 use Illuminate\Http\Request;
 
 class RekamMedisController extends Controller
@@ -12,19 +12,19 @@ class RekamMedisController extends Controller
     public function index()
     {
         $pasien = Pasien::orderBy('id','desc')->paginate(10);
-        $riwayat_penyakit = RiwayatPenyakit::all();
-        return view('rekam-medis.index', compact('riwayat_penyakit', 'pasien'));
+        $data_sakit = DataSakit::all();
+        return view('rekam-medis.index', compact('data_sakit', 'pasien'));
     }
 
     public function detail($id_pasien)
     {
         $detail = [];
-        $riwayat_penyakit= RiwayatPenyakit::where('id_pasien', $id_pasien)->first();
+        $data_sakit= DataSakit::where('id_pasien', $id_pasien)->first();
 
-        if($riwayat_penyakit){
-            $detail = RiwayatPenyakit::where('id_pasien',$riwayat_penyakit->id_pasien)->get();
+        if($data_sakit){
+            $detail = DataSakit::where('id_pasien',$data_sakit->id_pasien)->get();
         }
-        return view('rekam-medis.detail', compact('detail','riwayat_penyakit'));
+        return view('rekam-medis.detail', compact('detail','data_sakit'));
     }
 
     public function search(Request $request)

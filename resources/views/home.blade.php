@@ -16,7 +16,7 @@ Dashboard
     </script>
     <div class="row mb-3">
       <!-- Jumlah Data Pasien -->
-      <div class="col-xl-3 col-md-6 mb-4">
+      <div class="col-xl-4 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
             <div class="row align-items-center">
@@ -28,14 +28,14 @@ Dashboard
                 </div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-users fa-2x text-primary"></i>
+                <i class="fas fa-users fa-2x text-secondary"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- Jumlah Pasien Dirawat -->
-      <div class="col-xl-3 col-md-6 mb-4">
+      <div class="col-xl-4 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -43,18 +43,18 @@ Dashboard
                 <div class="text-xs font-weight-bold text-uppercase mb-1">Pasien Dirawat</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{$rawatcount}}</div>
                 <div class="mt-2 mb-0 text-muted text-xs">
-                  <span>Jumlah Pasien Dirawat</span>
+                  <span>Jumlah Pasien Dirawat di UKS</span>
                 </div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-procedures fa-2x text-success"></i>
+                <i class="fas fa-procedures fa-2x text-primary"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- Jumlah Pasien Rawat Jalan -->
-      <div class="col-xl-3 col-md-6 mb-4">
+      <div class="col-xl-4 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -66,14 +66,53 @@ Dashboard
                 </div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-clinic-medical fa-2x text-info"></i>
+                <i class="fa-solid fa-head-side-mask fa-2x text-info"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Jumlah Pasien Dirujuk -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Pasien Dirujuk</div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$rujukcount}}</div>
+                <div class="mt-2 mb-0 text-muted text-xs">
+                  <span>Jumlah Pasien Dirujuk Ke Rumah Sakit</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fa-solid fa-truck-medical fa-2x text-danger"></i><i class=""></i>
+                <i class=""></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Jumlah Pasien Sembuh -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Pasien Sembuh</div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$sembuhcount}}</div>
+                <div class="mt-2 mb-0 text-muted text-xs">
+                  <span>Jumlah Pasien Sembuh</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fa-solid fa-circle-check fa-2x text-success"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- Jumlah Obat -->
-      <div class="col-xl-3 col-md-6 mb-4">
+      <div class="col-xl-4 col-md-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -104,57 +143,6 @@ Dashboard
         </div>
       </div>
 
-      <!-- Carousel -->
-      {{-- <div class="col-xl-4 col-lg-8">
-        <div class="card mb-4">
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Info UKS</h6>
-          </div>
-          <div class="card-body">
-            <div class="mb-3">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100 rounded" style="filter: blur(2px)" src="https://placeimg.com/480/387/nature">
-                            @foreach ($info as $row)
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{$row->judul_info}}</h5>
-                                <p>{{$row->isi_info}}</p>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100 rounded" style="filter: blur(2px)" src="https://placeimg.com/480/387/arch">
-                            @foreach ($info as $row)
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{$row->judul_info}}</h5>
-                                <p>{{$row->isi_info}}</p>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-          </div>
-          <div class="card-footer text-center">
-            <a class="m-0 small text-primary card-link" href="/info">View More <i
-                class="fas fa-chevron-right"></i></a>
-          </div>
-        </div>
-      </div> --}}
 
       <!-- Update Data Pasien -->
       <div class="col-xl-12 col-lg-12 mb-4">
@@ -178,7 +166,7 @@ Dashboard
               </thead>
               <tbody>
                 <tr>
-                    @foreach ($riwayat_penyakit as $row)
+                    @foreach ($data_sakit as $row)
                     <tr class="text-center">
                         <td>{{$i++}}</td>
                         <td>{{$row->created_at->format('d/m/Y')}}</td>
@@ -191,7 +179,7 @@ Dashboard
                                 <span class="badge bg-primary" style="color: white">Rawat Jalan</span>
                             @endif
                         </td>
-                        <td><a href="/riwayat-penyakit" class="btn btn-sm btn-primary">Detail</a></td>
+                        <td><a href="/data-sakit" class="btn btn-sm btn-primary">Detail</a></td>
                     </tr>
                     @endforeach
                 </tr>
@@ -340,57 +328,6 @@ Dashboard
         </div>
       </div>
 
-      <!-- Carousel -->
-      {{-- <div class="col-xl-4 col-lg-8">
-        <div class="card mb-4">
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Info UKS</h6>
-          </div>
-          <div class="card-body">
-            <div class="mb-3">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100 rounded" style="filter: blur(2px)" src="https://placeimg.com/480/387/nature">
-                            @foreach ($info as $row)
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{$row->judul_info}}</h5>
-                                <p>{{$row->isi_info}}</p>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100 rounded" style="filter: blur(2px)" src="https://placeimg.com/480/387/arch">
-                            @foreach ($info as $row)
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{$row->judul_info}}</h5>
-                                <p>{{$row->isi_info}}</p>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-          </div>
-          <div class="card-footer text-center">
-            <a class="m-0 small text-primary card-link" href="/info">View More <i
-                class="fas fa-chevron-right"></i></a>
-          </div>
-        </div>
-      </div> --}}
 
       <!-- Update Data Pasien -->
       <div class="col-xl-12 col-lg-12 mb-4">
@@ -414,7 +351,7 @@ Dashboard
               </thead>
               <tbody>
                 <tr>
-                    @foreach ($riwayat_penyakit as $row)
+                    @foreach ($data_sakit as $row)
                     <tr class="text-center">
                         <td>{{$i++}}</td>
                         <td>{{$row->created_at->format('d/m/Y')}}</td>
@@ -427,7 +364,7 @@ Dashboard
                                 <span class="badge bg-primary" style="color: white">Rawat Jalan</span>
                             @endif
                         </td>
-                        <td><a href="/riwayat-penyakit" class="btn btn-sm btn-primary">Detail</a></td>
+                        <td><a href="/data-sakit" class="btn btn-sm btn-primary">Detail</a></td>
                     </tr>
                     @endforeach
                 </tr>

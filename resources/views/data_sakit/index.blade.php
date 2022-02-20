@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
 @section('tab')
-Riwayat Penyakit
+Data Sakit
 @endsection
 
 @section('title')
-Riwayat Penyakit
+Data Sakit
 @endsection
 
 @section('content')
@@ -43,12 +43,16 @@ Riwayat Penyakit
                                 <td class="">
                                     @if ($row->status_pasien == 'Rawat')
                                         <span class="badge bg-warning" style="color: white">Rawat</span>
-                                    @else
+                                    @elseif ($row->status_pasien == 'Rawat Jalan')
                                         <span class="badge bg-primary" style="color: white">Rawat Jalan</span>
+                                    @elseif ($row->status_pasien == 'Dirujuk')
+                                        <span class="badge bg-danger" style="color: white">Dirujuk</span>
+                                    @else
+                                        <span class="badge bg-success" style="color: white">Sembuh</span>
                                     @endif
                                 </td>
                                 <td>
-                                    <form action="{{route('data-sakit.destroy', $row->id)}}" onsubmit="return confirm('Hapus Riwayat Sakit {{$row->id_pasien}} ?')" method="post">
+                                    <form action="{{route('data-sakit.destroy', $row->id)}}" onsubmit="return confirm('Hapus Data Sakit {{$row->pasien->nama_pasien}} ?')" method="post">
                                     @csrf
                                     @method('delete')
                                         <a href="{{route('data-sakit.show', $row->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
@@ -102,11 +106,26 @@ Riwayat Penyakit
                                             <textarea name="tindakan" value="{{old('tindakan')}}" required='required' class="form-control" rows="3"></textarea>
                                         </div>
                                         <div class="form-group">
+                                            <label class="form-label">Kategori Penyakit</label>
+                                            <select name="kategori_penyakit" required="required" class="form-control">
+                                                <option value="">-- Pilih Kategori --</option>
+                                                <option value="Pencernaan">Pencernaan</option>
+                                                <option value="Pernafasan">Pernafasan</option>
+                                                <option value="Kulit">Kulit</option>
+                                                <option value="THT">THT</option>
+                                                <option value="Gigi & Mulut">Gigi & Mulut</option>
+                                                <option value="Infeksi">Infeksi</option>
+                                                <option value="Cedera & Luka">Cedera & Luka</option>
+                                                <option value="Lainnya">Lainnya</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="form-label">Status Pasien</label>
                                             <select name="status_pasien" required="required" class="form-control">
                                                 <option value="">-- Pilih Status --</option>
-                                                <option value="Rawat">Rawat</option>
                                                 <option value="Rawat Jalan">Rawat Jalan</option>
+                                                <option value="Rawat">Rawat</option>
+                                                <option value="Dirujuk">Dirujuk</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

@@ -9,13 +9,14 @@ class DataSakit extends Model
 {
     use HasFactory;
 
-    protected $table = 'riwayat_penyakit';
+    protected $table = 'data_sakit';
+
     protected $guarded = [];
 
-    // public function pasien()
-    // {
-    //     return $this->belongsTo(Pasien::class, 'id_pasien', 'id');
-    // }
+    public function pasien()
+    {
+        return $this->belongsTo(Pasien::class, 'id_pasien', 'id');
+    }
 
     public function petugas()
     {

@@ -15,11 +15,12 @@ class CreateRiwayatPenyakitsTable extends Migration
     {
         Schema::create('riwayat_penyakit', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_petugas');
-            $table->foreignId('id_pasien');
-            $table->string('keluhan');
-            $table->string('tindakan');
-            $table->enum('status_pasien', ['Rawat', 'Rawat Jalan']);
+            $table->string('nama_pasien');
+            $table->date('tanggal_lahir');
+            $table->string('jenis_kelamin');
+            $table->string('tahun_ajaran');
+            $table->foreignId('id_jabatan')->nullable();
+            $table->string('riwayat_penyakit');
             $table->timestamps();
         });
     }

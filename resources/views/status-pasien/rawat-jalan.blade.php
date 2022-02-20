@@ -30,9 +30,9 @@ Rawat Jalan
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($riwayat_penyakit as $row)
+                            @foreach ($data_sakit as $row)
                             <tr class="text-center">
-                                <td>{{$loop->iteration + ($riwayat_penyakit->perpage() * ($riwayat_penyakit->currentpage() -1)) }}</td>
+                                <td>{{$loop->iteration + ($data_sakit->perpage() * ($data_sakit->currentpage() -1)) }}</td>
                                 <td>{{$row->pasien->nama_pasien}}</td>
                                 <td>{{$row->keluhan}}</td>
                                 <td>{{$row->tindakan}}</td>
@@ -44,7 +44,7 @@ Rawat Jalan
                             @endforeach
                         </tbody>
                     </table>
-                    {{$riwayat_penyakit->appends(Request::all())->links('pagination::bootstrap-4')}}
+                    {{$data_sakit->appends(Request::all())->links('pagination::bootstrap-4')}}
                 </div>
             </div>
         </div>

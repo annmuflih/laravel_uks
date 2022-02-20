@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\MedicalCheckUpController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\DataSakitController;
 use App\Http\Controllers\RiwayatPenyakitController;
 use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +41,9 @@ Route::resource('/petugas', PetugasController::class)->middleware('auth');
 Route::resource('/obat', ObatController::class)->middleware('auth');
 Route::resource('/jabatan', JabatanController::class)->middleware('auth');
 Route::resource('/pasien', PasienController::class)->middleware('auth');
+Route::resource('/data-sakit', DataSakitController::class)->middleware('auth');
 Route::resource('/riwayat-penyakit', RiwayatPenyakitController::class)->middleware('auth');
+Route::resource('/medical-check-up', MedicalCheckUpController::class)->middleware('auth');
 
 Route::get('/rekam-medis', [RekamMedisController::class, 'index'])->name('rekam-medis.index')->middleware('auth');
 Route::get('/detail-rekam-medis/{id_pasien}', [RekamMedisController::class, 'detail'])->name('rekam-medis.detail')->middleware('auth');
@@ -47,5 +51,8 @@ Route::get('/cari-rekam-medis', [RekamMedisController::class, 'search'])->name('
 
 Route::get('/rawat', [StatusController::class, 'index_rawat'])->middleware('auth');
 Route::get('/rawat-jalan', [StatusController::class, 'index_rawat_jalan'])->middleware('auth');
+Route::get('/dirujuk', [StatusController::class, 'index_dirujuk'])->middleware('auth');
+Route::get('/sembuh', [StatusController::class, 'index_sembuh'])->middleware('auth');
 
 Route::get('/exportpasien', [PasienController::class, 'pasienExport'])->middleware('auth');
+Route::post('/importpasien', [PasienController::class, 'pasienImport'])->name('pasienImport')->middleware('auth');

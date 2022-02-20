@@ -12,6 +12,11 @@ class Petugas extends Model
     protected $table = 'petugas';
     protected $guarded = [];
 
+    public function data_sakit()
+    {
+        return $this->hasMany(DataSakit::class);
+    }
+
     public function riwayat_penyakit()
     {
         return $this->hasMany(RiwayatPenyakit::class);

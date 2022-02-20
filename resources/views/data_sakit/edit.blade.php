@@ -40,6 +40,8 @@ Edit Riwayat Penyakit
                                 <option value="{{$data_sakit->status_pasien}}">{{$data_sakit->status_pasien}}</option>
                                 <option value="Rawat">Rawat</option>
                                 <option value="Rawat Jalan">Rawat Jalan</option>
+                                <option value="Dirujuk">Dirujuk</option>
+                                <option value="Sembuh">Sembuh</option>
                             </select>
                         </div>
                         <div class="form-group">
