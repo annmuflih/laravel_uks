@@ -10,7 +10,6 @@ class DataSakit extends Model
     use HasFactory;
 
     protected $table = 'data_sakit';
-
     protected $guarded = [];
 
     public function pasien()

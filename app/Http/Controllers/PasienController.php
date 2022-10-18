@@ -29,10 +29,10 @@ class PasienController extends Controller
         return view('pasien.index', compact('pasien', 'jabatan'));
     }
 
-    public function pasienExport()
-    {
-        return Excel::download(new PasienExport, 'Pasien.xlsx');
-    }
+    // public function pasienExport()
+    // {
+    //     return Excel::download(new PasienExport, 'Pasien.xlsx');
+    // }
 
     public function pasienImport (Request $request)
     {
@@ -79,11 +79,11 @@ class PasienController extends Controller
             'id_jabatan' => $request->id_jabatan,
         ]);
 
-        RekamMedis::create([
-            'id_pasien' => $pasien->id,
-            'id_data-sakit' => 0,
-        ]);
-        Alert::success('Berhasil', 'Pasien berhasil ditambahkan');
+        // RekamMedis::create([
+        //     'id_pasien' => $pasien->id,
+        //     'id_data-sakit' => 0,
+        // ]);
+        // Alert::success('Berhasil', 'Pasien berhasil ditambahkan');
         return redirect('/pasien');
     }
 

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pasien;
-use App\Models\Petugas;
-use App\Models\RekamMedis;
-use App\Models\DataSakit;
+use App\Imports\RiwayatPenyakitImport;
+use App\Models\Jabatan;
+use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RiwayatPenyakitController extends Controller
 {
@@ -17,7 +17,17 @@ class RiwayatPenyakitController extends Controller
      */
     public function index()
     {
-        //
+        $riwayat_penyakit = RiwayatPenyakit::orderBy('created_at', 'desc')->paginate(10);
+        $jabatan = Jabatan::all();
+        // return dd($pasien, $jabatan);
+        return view('riwayat_penyakit.index', compact('riwayat_penyakit', 'jabatan'));
+    }
+
+    public function riwayatPenyakitImport (Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new RiwayatPenyakitImport, $file);
+        return back();
     }
 
     /**
@@ -38,7 +48,9 @@ class RiwayatPenyakitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        RiwayatPenyakit::create($input);
+        return redirect('/riwayat-penyakit');
     }
 
     /**
@@ -49,7 +61,8 @@ class RiwayatPenyakitController extends Controller
      */
     public function show($id)
     {
-        //
+        $riwayat_penyakit = RiwayatPenyakit::find($id);
+        return view('riwayat_penyakit.detail', compact('riwayat_penyakit'));
     }
 
     /**
@@ -60,7 +73,9 @@ class RiwayatPenyakitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $riwayat_penyakit = RiwayatPenyakit::find($id);
+        $jabatan = Jabatan::all();
+        return view('riwayat_penyakit.edit', compact('riwayat_penyakit','jabatan'));
     }
 
     /**
@@ -72,7 +87,11 @@ class RiwayatPenyakitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $riwayat_penyakit = RiwayatPenyakit::find($id);
+
+        $input = $request->all();
+        $riwayat_penyakit->update($input);
+        return redirect('/riwayat-penyakit');
     }
 
     /**
@@ -83,6 +102,8 @@ class RiwayatPenyakitController extends Controller
      */
     public function destroy($id)
     {
-       //
+        $riwayat_penyakit = RiwayatPenyakit::find($id);
+        $riwayat_penyakit->delete();
+        return back();
     }
 }

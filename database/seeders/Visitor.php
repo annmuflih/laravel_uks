@@ -19,7 +19,7 @@ class Visitor extends Seeder
             'name' => 'Visitor',
             'email' => 'visitor@gmail.com',
             'password' => Hash::make('1234'),
-            'role' => 'visitor',
+            'role' => 'Visitor',
         ]);
     }
 }

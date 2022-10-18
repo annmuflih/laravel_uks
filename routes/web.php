@@ -9,7 +9,12 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\DataSakitController;
 use App\Http\Controllers\RiwayatPenyakitController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Select2Controller;
 use App\Http\Controllers\StatusController;
+use App\Models\Pasien;
+use App\Models\RiwayatPenyakit;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,9 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //halaman utama login
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 //disable register
 Route::any('/register', [App\Http\Controllers\HomeController::class, 'index']);
@@ -47,6 +50,7 @@ Route::resource('/medical-check-up', MedicalCheckUpController::class)->middlewar
 
 Route::get('/rekam-medis', [RekamMedisController::class, 'index'])->name('rekam-medis.index')->middleware('auth');
 Route::get('/detail-rekam-medis/{id_pasien}', [RekamMedisController::class, 'detail'])->name('rekam-medis.detail')->middleware('auth');
+Route::get('/print-rekam-medis/{id_pasien}', [RekamMedisController::class, 'print'])->name('rekam-medis.print')->middleware('auth');
 Route::get('/cari-rekam-medis', [RekamMedisController::class, 'search'])->name('rekam-medis.search')->middleware('auth');
 
 Route::get('/rawat', [StatusController::class, 'index_rawat'])->middleware('auth');
@@ -56,3 +60,7 @@ Route::get('/sembuh', [StatusController::class, 'index_sembuh'])->middleware('au
 
 Route::get('/exportpasien', [PasienController::class, 'pasienExport'])->middleware('auth');
 Route::post('/importpasien', [PasienController::class, 'pasienImport'])->name('pasienImport')->middleware('auth');
+Route::post('/import-riwayat-penyakit', [RiwayatPenyakitController::class, 'riwayatPenyakitImport'])->name('riwayatPenyakitImport')->middleware('auth');
+
+Route::get('search', [SearchController::class, 'index'])->name('search');
+Route::get('autocomplete', [SearchController::class, 'autocomplete'])->name('autocomplete');

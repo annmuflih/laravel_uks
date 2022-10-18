@@ -7,6 +7,7 @@ use App\Models\Petugas;
 use App\Models\RekamMedis;
 use App\Models\DataSakit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DataSakitController extends Controller
 {
@@ -43,42 +44,12 @@ class DataSakitController extends Controller
     {
         $input = $request->all();
         $data_sakit = DataSakit::create($input);
-        $pasien = Pasien::where('id_pasien', $request->id_pasien)->first();
-        $pasien -> create([
-            'id_pasien' => $request->id_pasien,
-            'id_data-sakit' => $data_sakit->id,
-        ]);
+        // $rekam_medis = RekamMedis::where('id_pasien', $request->id_pasien)->first();
+        // $rekam_medis -> create([
+        //     'id_pasien' => $request->id_pasien,
+        //     'id_data-sakit' => $data_sakit->id,
+        // ]);
         return redirect('/data-sakit');
-    }
-
-    public function nama_pasien(Request $request)
-    {
-        $search = $request->cari;
-
-        $nama_pasien = DB::table('data_pasien')
-                            ->join('data_faskes', 'data_faskes.id', '=', 'data_pasien.id_faskes')
-                            ->join('data_kecamatan', 'data_kecamatan.id', '=', 'data_pasien.id_kecamatan')
-                            ->select('data_pasien.id','data_pasien.nama_pasien', 'data_faskes.nama_faskes', 'data_kecamatan.nama_kecamatan')
-                            ->limit(5);
-
-        $search = !empty($request->cari) ? ($request->cari) : ('');
-
-        if($search){
-           $data_pasien->where('data_pasien.nama_pasien', 'like', '%' .$search . '%');
-        }
-
-        $data = $data_pasien->limit(5)->get();
-
-        $response = array();
-        foreach($data as $pasien){
-           $response[] = array(
-               "value" => $pasien->id,
-               "label" => $pasien->nama_pasien,
-               "faskes" => $pasien->nama_faskes,
-               "kecamatan" => $pasien->nama_kecamatan
-            );
-        }
-        return response()->json($response);
     }
 
     /**

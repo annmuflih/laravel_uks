@@ -15,8 +15,8 @@ class CreateRekamMedisTable extends Migration
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_pasien');
-            $table->foreignId('id_data-sakit');
+            $table->foreignId('id_pasien')->nullable();
+            $table->foreignId('id_data_sakit')->nullable();
             $table->timestamps();
         });
     }

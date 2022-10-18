@@ -18,33 +18,42 @@ Edit Riwayat Penyakit
                     Edit Riwayat Penyakit
                 </div>
                 <div class="card-body">
-                    <form action="{{route('data-sakit.update', $data_sakit->id)}}" method="post">
+                    <form action="{{route('riwayat-penyakit.update', $riwayat_penyakit->id)}}" method="post">
                         @csrf
                         @method('put')
                         <div class="modal-body">
                         <div class="form-group">
-                            <label class="form-label">Nama pasien</label>
-                            <input readonly type="text" value="{{$data_sakit->pasien->nama_pasien}}" class="form-control">
+                            <label class="form-label">Nama</label>
+                            <input readonly type="text" value="{{$riwayat_penyakit->nama}}" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Keluhan</label>
-                            <input type="text" name="keluhan" value="{{$data_sakit->keluhan}}" required='required' class="form-control">
+                            <label class="form-label">Tanggal Lahir</label>
+                            <input type="text" name="tanggal_lahir" value="{{$riwayat_penyakit->tanggal_lahir}}" required='required' class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Tindakan</label>
-                            <input type="text" name="tindakan" value="{{$data_sakit->tindakan}}" required='required' class="form-control">
+                            <label class="form-label">Jenis Kelamin</label>
+                            <input type="text" name="jenis_kelamin" value="{{$riwayat_penyakit->jenis_kelamin}}" required='required' class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Status Pasien</label>
-                            <select name="status_pasien" required="required" class="form-control">
-                                <option value="{{$data_sakit->status_pasien}}">{{$data_sakit->status_pasien}}</option>
-                                <option value="Rawat">Rawat</option>
-                                <option value="Rawat Jalan">Rawat Jalan</option>
+                            <label class="form-label">Tahun Ajaran</label>
+                            <input type="text" name="tahun_ajaran" value="{{$riwayat_penyakit->tahun_ajaran}}" required='required' class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Jabatan</label>
+                            <select name="id_jabatan" required="required" class="form-control">
+                                <option value="{{$riwayat_penyakit->id_jabatan}}">{{$riwayat_penyakit->jabatan->nama_jabatan}}</option>
+                                @foreach ($jabatan as $row)
+                                    <option value="{{$row->id}}">{{$row->nama_jabatan}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Petugas</label>
-                            <input readonly type="text" value="{{$data_sakit->petugas->nama_petugas}}" class="form-control">
+                            <label class="form-label">Riwayat Penyakit</label>
+                            <input type="text" name="riwayat_penyakit" value="{{$riwayat_penyakit->riwayat_penyakit}}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Ketegori Penyakit</label>
+                            <input type="text" name="kategori_penyakit" value="{{$riwayat_penyakit->kategori_penyakit}}" class="form-control">
                         </div>
                     </div>
                         <div class="modal-footer">

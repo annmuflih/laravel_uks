@@ -85,7 +85,7 @@
     <li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-info"></i>
-            <span>1.0.0 version</span>
+            <span>1.1.0 version</span>
         </a>
     </li>
 
@@ -157,7 +157,7 @@
     <li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-info"></i>
-            <span>1.0.0 version</span>
+            <span>1.1.0 version</span>
         </a>
     </li>
 
@@ -189,7 +189,7 @@
     <li class="nav-item">
         <a class="nav-link">
             <i class="fas fa-info"></i>
-            <span>1.0.0 version</span>
+            <span>1.1.0 version</span>
         </a>
     </li>
 @endif

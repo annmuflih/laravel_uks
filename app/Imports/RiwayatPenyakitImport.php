@@ -16,11 +16,13 @@ class RiwayatPenyakitImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new RiwayatPenyakit([
-            'nama_pasien'     => $row['nama_pasien'],
+            'nama'     => $row['nama'],
             'tanggal_lahir'   => $row['tanggal_lahir'],
             'jenis_kelamin'   => $row['jenis_kelamin'],
-            'kelas'           => $row['kelas'],
-            'id_jabatan'      => $row['id_jabatan']
+            'tahun_ajaran'           => $row['tahun_ajaran'],
+            'id_jabatan'      => $row['id_jabatan'],
+            'riwayat_penyakit'      => $row['riwayat_penyakit'],
+            'kategori_penyakit'      => $row['kategori_penyakit'],
         ]);
     }
 }

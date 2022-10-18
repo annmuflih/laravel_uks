@@ -19,7 +19,7 @@ class Petugas extends Seeder
             'name' => 'Petugas UKS',
             'email' => 'petugas@gmail.com',
             'password' => Hash::make('1234'),
-            'role' => 'petugas',
+            'role' => 'Petugas',
         ]);
     }
 }

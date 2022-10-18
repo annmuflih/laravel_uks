@@ -19,12 +19,24 @@ class RekamMedisController extends Controller
     public function detail($id_pasien)
     {
         $detail = [];
+        $idpasien = Pasien::find($id_pasien);
         $data_sakit= DataSakit::where('id_pasien', $id_pasien)->first();
 
         if($data_sakit){
             $detail = DataSakit::where('id_pasien',$data_sakit->id_pasien)->get();
         }
-        return view('rekam-medis.detail', compact('detail','data_sakit'));
+        return view('rekam-medis.detail', compact('detail','data_sakit','idpasien'));
+    }
+
+    public function print($id_pasien)
+    {
+        $detail = [];
+        $data_sakit= DataSakit::where('id_pasien', $id_pasien)->first();
+
+        if($data_sakit){
+            $detail = DataSakit::where('id_pasien',$data_sakit->id_pasien)->get();
+        }
+        return view('rekam-medis.print', compact('detail','data_sakit'));
     }
 
     public function search(Request $request)
