@@ -9,6 +9,10 @@
     <meta name="author" content="">
     <link href="{{ asset('dist/img/logo/logo4.png') }}" rel="icon">
     <title>@yield('tab')</title>
+
+    <!-- local css -->
+    <link rel="stylesheet" href="/dist/css/home.css">
+
     <link href="https://indrijunanda.github.io/RuangAdmin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
         type="text/css">
     <link href="https://indrijunanda.github.io/RuangAdmin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"
@@ -19,6 +23,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://kit.fontawesome.com/212d3d2392.js" crossorigin="anonymous"></script>
+
+    <!-- select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -51,7 +58,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="text-white d-none d-lg-inline large">
                                     @if (Auth::check())
-                                        Halo, {{ Auth::user()->name }}
+                                    Halo, {{ Auth::user()->name }}
                                     @endif
                                 </span>
                             </a>
@@ -59,7 +66,7 @@
                                 aria-labelledby="userDropdown">
                                 <span class="ml-4 text-gray d-none d-lg-inline small">
                                     @if (Auth::check())
-                                        {{ Auth::user()->name }}
+                                    {{ Auth::user()->name }}
                                     @endif
                                 </span>
                                 <div class="dropdown-divider"></div>
@@ -98,8 +105,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabelLogout">Keluar?</h5>
-                                    <button type="button" class="close" data-dismiss="modal"
-                                        aria-label="Close">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -131,7 +137,7 @@
                     <div class="my-auto text-center copyright">
                         <span>copyright &copy; UKS -
                             <script>
-                                document.write(new Date().getFullYear());
+                            document.write(new Date().getFullYear());
                             </script>
                         </span>
                     </div>
@@ -164,6 +170,17 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
         integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
     @yield('chart')
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+    $("#id_pasien").select2({
+        placeholder: "Select a programming language",
+        allowClear: true
+    });
+    </script>
 </body>
 
 </html>
