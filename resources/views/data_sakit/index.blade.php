@@ -30,8 +30,14 @@ Data Sakit
                             <tr class="text-center">
                                 <th>No.</th>
                                 <th>Nama Pasien</th>
-                                <th>Keluhan</th>
-                                <th>Tindakan</th>
+                                <th>Subject</th>
+                                <th>Tensi</th>
+                                <th>Suhu</th>
+                                <th>Nadi</th>
+                                <th>SPO2</th>
+                                <th>Assesment</th>
+                                <th>Planning</th>
+                                <th>Terapi</th>
                                 <th>Status Pasien</th>
                                 <th>Action</th>
                             </tr>
@@ -42,8 +48,14 @@ Data Sakit
                                 <td>{{$loop->iteration + ($data_sakit->perpage() * ($data_sakit->currentpage() -1)) }}
                                 </td>
                                 <td>{{$row->pasien->nama_pasien}}</td>
-                                <td>{{$row->keluhan}}</td>
-                                <td>{{$row->tindakan}}</td>
+                                <td>{{$row->subject}}</td>
+                                <td>{{$row->tensi}}</td>
+                                <td>{{$row->suhu}}</td>
+                                <td>{{$row->nadi}}</td>
+                                <td>{{$row->SPO2}}</td>
+                                <td>{{$row->assesment}}</td>
+                                <td>{{$row->planning}}</td>
+                                <td>{{$row->terapi}}</td>
                                 <td class="">
                                     @if ($row->status_pasien == 'Rawat')
                                     <span class="badge bg-warning" style="color: white">Rawat</span>
@@ -101,39 +113,104 @@ Data Sakit
 
                         <div class="form-group">
                             <label class="form-label">Nama Pasien</label>
-                            <select name="id_pasien" required="required" class="js-states"
+                            <select name="id_pasien" required="required" class="js-states form-control"
                                 style="width: 100%; margin: 6px 12px;">
-                                <option value="">-- Pilih Petugas --</option>
+                                <option value="">-- Pilih Nama Pasien --</option>
                                 @foreach ($pasien as $row)
                                 <option value="{{$row->id}}">{{$row->nama_pasien}}</option>
                                 @endforeach
                             </select>
                         </div>
 
+                        <label class="form-label">Diagnosa (SOAP)</label>
+
                         <div class="form-group">
-                            <label class="form-label">Keluhan</label>
-                            <textarea name="keluhan" value="{{old('keluhan')}}" required='required' class="form-control"
+                            <label class="form-label">A. Subject</label>
+                            <textarea name="subject" value="{{old('subject')}}" required='required' class="form-control"
                                 rows="3"></textarea>
                         </div>
+
+                        <label class="form-label">B. Object</label>
+
                         <div class="form-group">
-                            <label class="form-label">Tindakan</label>
-                            <textarea name="tindakan" value="{{old('tindakan')}}" required='required'
+                            <label class="form-label">Tensi</label>
+                            <input name="tensi" value="{{old('tensi')}}" required='required' class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Suhu</label>
+                            <input name="suhu" value="{{old('suhu')}}" required='required' class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nadi</label>
+                            <input name="nadi" value="{{old('nadi')}}" required='required' class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">SPO2</label>
+                            <input name="SPO2" value="{{old('SPO2')}}" required='required' class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">C. Assesment</label>
+                            <textarea name="assesment" value="{{old('assesment')}}" required='required'
                                 class="form-control" rows="3"></textarea>
                         </div>
+
                         <div class="form-group">
-                            <label class="form-label">Kategori Penyakit</label>
-                            <select name="kategori_penyakit" required="required" class="form-control">
-                                <option value="">-- Pilih Kategori --</option>
-                                <option value="Pencernaan">Pencernaan</option>
-                                <option value="Pernafasan">Pernafasan</option>
-                                <option value="Kulit">Kulit</option>
-                                <option value="THT">THT</option>
-                                <option value="Gigi & Mulut">Gigi & Mulut</option>
-                                <option value="Infeksi">Infeksi</option>
-                                <option value="Cedera & Luka">Cedera & Luka</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
+                            <label class="form-label">D. Planning</label>
+                            <textarea name="planning" value="{{old('planning')}}" required='required'
+                                class="form-control" rows="3"></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Terapi</label>
+                            <textarea name="terapi" value="{{old('terapi')}}" required='required'
+                                class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kategori Penyakit</label>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Pencernaan" type="checkbox" class="custom-control-input" id="Pencernaan">
+                                    <label class="custom-control-label" for="Pencernaan">Pencernaan</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Pernapasan" type="checkbox" class="custom-control-input" id="Pernapasan">
+                                    <label class="custom-control-label" for="Pernapasan">Pernapasan</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Kulit" type="checkbox" class="custom-control-input" id="Kulit">
+                                    <label class="custom-control-label" for="Kulit">Kulit</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="THT" type="checkbox" class="custom-control-input" id="THT">
+                                    <label class="custom-control-label" for="THT">THT</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Gigi & Mulut" type="checkbox" class="custom-control-input" id="Gigi & Mulut">
+                                    <label class="custom-control-label" for="Gigi & Mulut">Gigi & Mulut</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Infeksi" type="checkbox" class="custom-control-input" id="Infeksi">
+                                    <label class="custom-control-label" for="Infeksi">Infeksi</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Cedera & Luka" type="checkbox" class="custom-control-input" id="Cedera & Luka">
+                                    <label class="custom-control-label" for="Cedera & Luka">Cedera & Luka</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Hipetermi" type="checkbox" class="custom-control-input" id="Hipetermi">
+                                    <label class="custom-control-label" for="Hipetermi">Hipetermi</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Hipotermi" type="checkbox" class="custom-control-input" id="Hipotermi">
+                                    <label class="custom-control-label" for="Hipotermi">Hipotermi</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input name="kategori_penyakit" value="Hipertensi" type="checkbox" class="custom-control-input" id="Hipertensi">
+                                    <label class="custom-control-label" for="Hipertensi">Hipertensi</label>
+                                </div>
+                        </div>
+
                         <div class="form-group">
                             <label class="form-label">Status Pasien</label>
                             <select name="status_pasien" required="required" class="form-control">

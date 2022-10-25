@@ -93,8 +93,14 @@ class DataSakitController extends Controller
     {
         $data_sakit = DataSakit::find($id);
         $data_sakit->update([
-            'keluhan' => $request->keluhan,
-            'tindakan' => $request->tindakan,
+            'subject' => $request->subject,
+            'tensi' => $request->tensi,
+            'suhu' => $request->suhu,
+            'nadi' => $request->nadi,
+            'SPO2' => $request->SPO2,
+            'assesment' => $request->assesment,
+            'planning' => $request->planning,
+            'terapi' => $request->terapi,
             'status_pasien' => $request->status_pasien,
         ]);
         return redirect('/data-sakit');

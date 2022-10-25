@@ -16,7 +16,8 @@
                     <form method="POST" action="{{ route('login') }}" class="user">
                         @csrf
 
-                        <div class="form-group">
+                        {{-- Login dengan Email --}}
+                        {{-- <div class="form-group">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter Email Address">
 
                         @error('email')
@@ -24,10 +25,21 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                        </div> --}}
+
+                        {{-- Login dengan Username --}}
+                        <div class="form-group">
+                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="Enter Username">
+
+                        @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </div>
 
                         <div class="form-group">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter Password">
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -55,7 +67,7 @@
                         <hr>
                         <div class="text-center">
                             <span>Visitor ? <br> Login with <br>
-                            Email : visitor@gmail.com
+                            Username : visitor <br>
                             Password : 1234</span>
                         </div>
                     </form>

@@ -17,9 +17,15 @@ class CreateDataSakitsTable extends Migration
             $table->id();
             $table->foreignId('id_petugas');
             $table->foreignId('id_pasien');
-            $table->string('keluhan');
-            $table->string('tindakan');
-            $table->enum('kategori_penyakit', ['Pencernaan', 'Pernafasan','Kulit','THT','Gigi & Mulut','Infeksi','Cedera & Luka','Lainnya']);
+            $table->text('subject');
+            $table->string('tensi');
+            $table->string('suhu');
+            $table->string('nadi');
+            $table->string('SPO2');
+            $table->text('assesment');
+            $table->text('planning');
+            $table->text('terapi');
+            $table->string('kategori_penyakit');
             $table->enum('status_pasien', ['Rawat', 'Rawat Jalan','Dirujuk','Sembuh']);
             $table->timestamps();
         });

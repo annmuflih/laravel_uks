@@ -28,12 +28,36 @@ Detail Riwayat Penyakit
                             <th>: {{$data_sakit->pasien->nama_pasien}}</th>
                         </tr>
                         <tr>
-                            <th>Keluhan</th>
-                            <th>: {{($data_sakit->keluhan)}}</th>
+                            <th>Subject</th>
+                            <th>: {{($data_sakit->subject)}}</th>
                         </tr>
                         <tr>
-                            <th>Tindakan</th>
-                            <th>: {{($data_sakit->tindakan)}}</th>
+                            <th>Tensi</th>
+                            <th>: {{($data_sakit->tensi)}}</th>
+                        </tr>
+                        <tr>
+                            <th>Suhu</th>
+                            <th>: {{($data_sakit->suhu)}}</th>
+                        </tr>
+                        <tr>
+                            <th>Nadi</th>
+                            <th>: {{($data_sakit->nadi)}}</th>
+                        </tr>
+                        <tr>
+                            <th>SPO2</th>
+                            <th>: {{($data_sakit->SPO2)}}</th>
+                        </tr>
+                        <tr>
+                            <th>Assesment</th>
+                            <th>: {{($data_sakit->assesment)}}</th>
+                        </tr>
+                        <tr>
+                            <th>Planning</th>
+                            <th>: {{($data_sakit->planning)}}</th>
+                        </tr>
+                        <tr>
+                            <th>Terapi</th>
+                            <th>: {{($data_sakit->terapi)}}</th>
                         </tr>
                         <tr>
                             <th>Status</th>

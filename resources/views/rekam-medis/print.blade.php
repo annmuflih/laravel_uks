@@ -82,15 +82,7 @@
                                                             <td>{{ $row->id }}</td>
                                                             <td>{{ $row->keluhan }}</td>
                                                             <td>{{ $row->tindakan }}</td>
-                                                            <td>
-                                                                @if ($row->status_pasien == 'Rawat')
-                                                                    <span class="badge bg-warning"
-                                                                        style="color: white">Rawat</span>
-                                                                @else
-                                                                    <span class="badge bg-primary"
-                                                                        style="color: white">Rawat Jalan</span>
-                                                                @endif
-                                                            </td>
+                                                            <td>{{$row->status_pasien}}</td>
                                                             <td>{{ $row->petugas->nama_petugas }}</td>
                                                             <td>{{ $row->created_at->format('d/m/Y') }}</td>
                                                             <td>{{ $row->created_at->format('H:m:s') }}</td>
