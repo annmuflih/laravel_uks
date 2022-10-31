@@ -1,5 +1,5 @@
 ## About UKS
-This is a Laravel project on the UKS (School Health Unit) application for schools in Indonesia.
+This is a Laravel project about UKS (Unit Kesehatan Sekolah) application for schools in Indonesia.
 
 ## Installation
 1. Clone this repository
