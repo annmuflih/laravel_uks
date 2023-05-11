@@ -1,10 +1,10 @@
 <div align="center">
 <img src="/img/logo.png" alt="Logo"/>
-<h1>UKS</h1>
+<h1>Laravel UKS App</h1>
 
 <h4>This is a Laravel project about UKS (Unit Kesehatan Sekolah) application for schools in Indonesia.</h4>
 
-<img src="/img/prev.jpeg" height=100 alt="Prev"/>
+<img src="/img/prev.jpeg" alt="Prev"/>
 
 Made with :
 <p>
