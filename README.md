@@ -1,5 +1,4 @@
-## About UKS
-This is a Laravel project about UKS (Unit Kesehatan Sekolah) application for schools in Indonesia.
+
 
 ## Installation
 1. Clone this repository
@@ -10,5 +9,44 @@ This is a Laravel project about UKS (Unit Kesehatan Sekolah) application for sch
 4. Run `php artisan migrate`
 5. Run `php artisan db:seed`
 6. Run `php artisan serve`
+
+## About UKS
+This is a Laravel project about UKS (Unit Kesehatan Sekolah) application for schools in Indonesia.
+
+## Installation
+
+1 - Clone this repository
+
+    git clone https://github.com/rodhisz/laravel_uks.git
+2 - Run
+
+    composer install
+3 - Run
+for macOS or linux
+
+    cp .env.example .env
+
+for windows
+
+    copy .env.example .env
+
+4 - Open your .env file and change the database name (`DB_DATABASE`) to whatever you have, username (`DB_USERNAME`) and password (`DB_PASSWORD`) field correspond to your configuration.
+
+5 - Run
+
+    php artisan key:generate
+
+6 - Run
+
+    php artisan migrate
+7 - Run
+
+    php artisan db:seed
+8 - And last run
+
+    php artisan serve
+
+Happy Coding ✨
+
 
 
