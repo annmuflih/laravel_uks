@@ -21,4 +21,9 @@ class DataSakit extends Model
     {
         return $this->belongsTo(Petugas::class,'id_petugas', 'id');
     }
+
+    public function kategoriPenyakit()
+    {
+        return $this->belongsTo(KategoriPenyakit::class);
+    }
 }
