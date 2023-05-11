@@ -12,6 +12,8 @@ Made with :
     <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white"/></a>
     <a href="https://getbootstrap.com">
     <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/></a>
+    <a href="https://github.com/indrijunanda/RuangAdmin">
+    <img src="https://img.shields.io/badge/RuangAdmin-4C60DA?style=for-the-badge&logoColor=white"/></a>
 </p>
 </div>
 
