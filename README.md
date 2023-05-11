@@ -4,7 +4,7 @@
 
 <h4>This is a Laravel project about UKS (Unit Kesehatan Sekolah) application for schools in Indonesia.</h4>
 
-<img src="/img/prev.jpeg" alt="Prev"/>
+<img src="/img/prev.jpeg" height=500 alt="Prev"/>
 
 Made with :
 <p>
