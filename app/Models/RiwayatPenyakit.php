@@ -12,8 +12,8 @@ class RiwayatPenyakit extends Model
     protected $table = 'riwayat_penyakit';
     protected $guarded = [];
 
-    public function jabatan()
+    public function pasien()
     {
-        return $this->belongsTo(Jabatan::class,'id_jabatan', 'id');
+        return $this->belongsTo(Pasien::class, 'id_pasien');
     }
 }

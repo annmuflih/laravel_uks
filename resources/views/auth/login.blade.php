@@ -65,11 +65,6 @@
                         </div>
 
                         <hr>
-                        <div class="text-center">
-                            <span>Visitor ? <br> Login with <br>
-                            Username : visitor <br>
-                            Password : 1234</span>
-                        </div>
                     </form>
                     <div class="text-center">
                     </div>

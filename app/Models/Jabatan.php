@@ -12,11 +12,6 @@ class Jabatan extends Model
     protected $table = 'jabatan';
     protected $guarded = [];
 
-    public function pasien()
-    {
-        return $this->hasMany(Pasien::class);
-    }
-
     public function medical_check_up()
     {
         return $this->hasMany(MedicalCheckUp::class);

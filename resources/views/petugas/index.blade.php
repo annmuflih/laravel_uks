@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
 @section('tab')
-Petugas UKS
+Dokter
 @endsection
 
 @section('title')
-Petugas UKS
+Dokter
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@ Petugas UKS
                         <thead>
                             <tr class="text-center">
                                 <th>No.</th>
-                                <th>Nama Petugas</th>
+                                <th>Nama Dokter</th>
                                 <th>NIP</th>
                                 <th>Action</th>
                             </tr>
@@ -60,7 +60,7 @@ Petugas UKS
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabelLogout">Tambah petugas</h5>
+                                    <h5 class="modal-title" id="exampleModalLabelLogout">Tambah Dokter</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -69,11 +69,11 @@ Petugas UKS
                                     @csrf
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label class="form-label">Nama Petugas</label>
+                                            <label class="form-label">Nama Dokter</label>
                                             <input type="text" name="nama_petugas" value="{{old('nama_petugas')}}" required='required' class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-label">Nomor Induk Petugas</label>
+                                            <label class="form-label">Nomor Induk Dokter</label>
                                             <input name="nomor_induk_petugas" value="{{old('nomor_induk_petugas')}}" required='required' class="form-control">
                                         </div>
                                     </div>

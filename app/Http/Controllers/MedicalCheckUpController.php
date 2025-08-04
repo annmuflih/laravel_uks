@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jabatan;
 use App\Models\MedicalCheckUp;
+use App\Models\Pasien;
 use Faker\Provider\Medical;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +20,8 @@ class MedicalCheckUpController extends Controller
     public function index()
     {
         $mcu = MedicalCheckUp::orderBy('created_at', 'desc')->paginate(10);
-        $jabatan = Jabatan::all();
-        // return dd($pasien, $jabatan);
-        return view('medical-check-up.index', compact('mcu', 'jabatan'));
+        $pasien = Pasien::all();
+        return view('medical-check-up.index', compact('mcu', 'pasien'));
     }
 
     /**
@@ -43,13 +42,21 @@ class MedicalCheckUpController extends Controller
      */
     public function store(Request $request)
     {
-        MedicalCheckUp::create([
-            'nama' => $request->nama,
-            'id_jabatan' => $request->id_jabatan,
-            'mcu' => $request->file('mcu')->store('Medical Check Up'),
+        $request->validate([
+            'pasien_id' => 'required|exists:pasien,id',
+            'mcu' => 'required|file|mimes:pdf,jpg,jpeg,png',
         ]);
 
-        Alert::success('Berhasil', 'Medical Check Up berhasil ditambahkan');
+        $file = $request->file('mcu');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $file->move(public_path('uploads/mcu'), $filename);
+
+        MedicalCheckUp::create([
+            'pasien_id' => $request->pasien_id,
+            'nama' => Pasien::find($request->pasien_id)->nama, // Simpan juga nama (opsional)
+            'status' => 'Belum Terverifikasi',
+            'file' => $filename,
+        ]);
         return redirect('/medical-check-up');
     }
 
@@ -74,8 +81,7 @@ class MedicalCheckUpController extends Controller
     public function edit($id)
     {
         $mcu = MedicalCheckUp::find($id);
-        $jabatan = Jabatan::all();
-        return view('medical-check-up.edit', compact('mcu', 'jabatan'));
+        return view('medical-check-up.edit', compact('mcu'));
     }
 
     /**

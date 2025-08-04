@@ -21,9 +21,9 @@ class DataSakit extends Model
     {
         return $this->belongsTo(Petugas::class,'id_petugas', 'id');
     }
-
-    public function kategoriPenyakit()
+    public function obat()
     {
-        return $this->belongsTo(KategoriPenyakit::class);
+        return $this->belongsTo(Obat::class,'id_obat', 'id');
     }
+
 }

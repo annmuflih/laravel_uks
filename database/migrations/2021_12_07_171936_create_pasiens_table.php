@@ -18,8 +18,7 @@ class CreatePasiensTable extends Migration
             $table->string('nama_pasien');
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
-            $table->string('kelas');
-            $table->foreignId('id_jabatan')->nullable();
+            $table->string('usia')->nullable();
             $table->timestamps();
         });
     }

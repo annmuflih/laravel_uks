@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
 @section('tab')
-Edit Petugas UKS
+Edit Dokter
 @endsection
 
 @section('title')
-Edit Petugas UKS
+Edit Dokter
 @endsection
 
 @section('content')
@@ -23,11 +23,11 @@ Edit Petugas UKS
                         @method('put')
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="form-label">Nama Petugas</label>
+                                <label class="form-label">Nama Dokter</label>
                                 <input type="text" name="nama_petugas" value="{{$petugas->nama_petugas}}" required='required' class="form-control">
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Nomor Induk Petugas</label>
+                                <label class="form-label">Nomor Induk Dokter</label>
                                 <input name="nomor_induk_petugas" required='required' class="form-control" value="{{$petugas->nomor_induk_petugas}}">
                             </div>
                         </div>

@@ -31,7 +31,7 @@
                                     <tr class="text-center">
                                         <th>ID Riwayat Sakit</th>
                                         <th>Keluhan</th>
-                                        <th>Tindakan</th>
+                                        <th>Obat</th>
                                         <th>Status Pasien</th>
                                         <th>Nama Petugas</th>
                                         <th>Tanggal</th>
@@ -48,9 +48,9 @@
                                     <tr class="text-center">
                                         <th>ID Riwayat Sakit</th>
                                         <th>Keluhan</th>
-                                        <th>Tindakan</th>
+                                        <th>Perkiraan Penyakit</th>
+                                        <th>Obat</th>
                                         <th>Status Pasien</th>
-                                        <th>Nama Petugas</th>
                                         <th>Tanggal</th>
                                         <th>Jam</th>
                                     </tr>
@@ -60,19 +60,23 @@
                                         <tr class="text-center">
                                             <td>{{ $row->id }}</td>
                                             <td>{{ $row->keluhan }}</td>
-                                            <td>{{ $row->tindakan }}</td>
+                                            <td>{{ $data_sakit->perkiraan_penyakit }}</td>
+                                            <td>{{ $data_sakit->obat->nama_obat ?? '-' }}</td>
                                             <td>
-                                                @if ($row->status_pasien == 'Rawat')
-                                                    <span class="badge bg-warning" style="color: white">Rawat</span>
+                                                @if ($row->status_pasien == 'Belum Rawat')
+                                                    <span class="badge bg-danger" style="color: white">Belum Rawat</span>
                                                 @elseif ($row->status_pasien == 'Rawat Jalan')
                                                     <span class="badge bg-primary" style="color: white">Rawat Jalan</span>
+                                                @elseif ($row->status_pasien == 'Rawat Inap')
+                                                    <span class="badge bg-primary" style="color: white">Rawat Inap</span>
                                                 @elseif ($row->status_pasien == 'Dirujuk')
                                                     <span class="badge bg-danger" style="color: white">Dirujuk</span>
+                                                @elseif ($row->status_pasien == 'Batal Rawat')
+                                                    <span class="badge bg-danger" style="color: white">Batal Rawat</span>
                                                 @else
                                                     <span class="badge bg-success" style="color: white">Sembuh</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $row->petugas->nama_petugas }}</td>
                                             <td>{{ $row->created_at->format('d/m/Y') }}</td>
                                             <td>{{ $row->created_at->format('H:m:s') }}</td>
                                         </tr>

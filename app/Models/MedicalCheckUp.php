@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class MedicalCheckUp extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'medical_check_up';
     protected $guarded = [];
 
-    public function jabatan()
+    public function pasien()
     {
-        return $this->belongsTo(Jabatan::class,'id_jabatan', 'id');
+        return $this->belongsTo(Pasien::class, 'pasien_id');
     }
 }

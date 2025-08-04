@@ -22,10 +22,12 @@
                 <h6 class="collapse-header">Rekam Medis</h6>
                 <a class="collapse-item" href="/rekam-medis">Rekam Medis</a>
                 <h6 class="collapse-header">Pasien</h6>
-                <a class="collapse-item" href="/rawat">Rawat</a>
+                <a class="collapse-item" href="/belum-rawat">Belum Rawat</a>
                 <a class="collapse-item" href="/rawat-jalan">Rawat Jalan</a>
+                <a class="collapse-item" href="/rawat-inap">Rawat Inap</a>
                 <a class="collapse-item" href="/dirujuk">Dirujuk</a>
                 <a class="collapse-item" href="/sembuh">Sembuh</a>
+                <a class="collapse-item" href="/batal-rawat">Batal Rawat</a>
             </div>
         </div>
     </li>
@@ -66,7 +68,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/petugas">
             <i class="fas fa-user-md"></i>
-            <span>Petugas UKS</span>
+            <span>Dokter</span>
         </a>
     </li>
     <li class="nav-item">
@@ -78,7 +80,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/info">
             <i class="far fa-newspaper"></i>
-            <span>Info UKS</span>
+            <span>Info Klinik</span>
         </a>
     </li>
     <hr class="sidebar-divider">
@@ -150,7 +152,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/info">
             <i class="far fa-newspaper"></i>
-            <span>Info UKS</span>
+            <span>Info Klinik</span>
         </a>
     </li>
     <hr class="sidebar-divider">
@@ -182,7 +184,7 @@
     <li class="nav-item">
         <a class="nav-link" href="/info">
             <i class="far fa-newspaper"></i>
-            <span>Info UKS</span>
+            <span>Info Klinik</span>
         </a>
     </li>
     <hr class="sidebar-divider">

@@ -15,8 +15,8 @@
                 <div class="card">
                     <div class="card-header">
                         @if (Auth::user()->role == 'admin')
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal"
-                                class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a>
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i
+                                    class="fa fa-plus"></i> Tambah</a>
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#importModal"
                                 class="btn btn-primary"><i class="fas fa-file-upload"></i> Import</a>
                         @elseif (Auth::user()->role == 'petugas')
@@ -32,8 +32,7 @@
                                     <th>No.</th>
                                     <th>Nama Pasien</th>
                                     <th>Jenis Kelamin</th>
-                                    <th>Kelas</th>
-                                    <th>Jabatan</th>
+                                    <th>Usia</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -44,8 +43,7 @@
                                         </td>
                                         <td>{{ $row->nama_pasien }}</td>
                                         <td>{{ $row->jenis_kelamin }}</td>
-                                        <td>{{ $row->kelas }}</td>
-                                        <td>{{ $row->jabatan->nama_jabatan }}</td>
+                                        <td>{{ $row->usia }}</td>
                                         <td>
                                             <form action="{{ route('pasien.destroy', $row->id) }}"
                                                 onsubmit="return confirm('Hapus pasien {{ $row->nama_pasien }} ?')"
@@ -115,26 +113,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Kelas</label>
-                                <select name="kelas" required="required" class="form-control">
-                                    <option value="">-- Pilih Kelas --</option>
-                                    <option value="Non-Murid">Non Murid</option>
-                                    <option value="SMP VII">SMP VII</option>
-                                    <option value="SMP VIII">SMP VIII</option>
-                                    <option value="SMP IX">SMP IX</option>
-                                    <option value="SMK X">SMK X</option>
-                                    <option value="SMK XI">SMK XI</option>
-                                    <option value="SMK XII">SMK XII</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Jabatan</label>
-                                <select name="id_jabatan" required="required" class="form-control">
-                                    <option value="">-- Pilih Jabatan --</option>
-                                    @foreach ($jabatan as $row)
-                                        <option value="{{ $row->id }}">{{ $row->nama_jabatan }}</option>
-                                    @endforeach
-                                </select>
+                                <label class="form-label">Usia</label>
+                                <input type="text" name="usia" value="{{ old('usia') }}"
+                                    required='required' class="form-control @error('usia') is-invalid @enderror">
+                                @error('usia')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -146,8 +132,8 @@
             </div>
         </div>
         {{-- modal import --}}
-        <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-            aria-hidden="true">
+        <div class="modal fade" id="importModal" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

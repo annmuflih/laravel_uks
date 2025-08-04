@@ -12,13 +12,12 @@ class Pasien extends Model
     protected $table = 'pasien';
     protected $guarded = [];
 
-    public function jabatan()
-    {
-        return $this->belongsTo(Jabatan::class,'id_jabatan', 'id');
-    }
-
     public function data_sakit()
     {
         return $this->hasMany(DataSakit::class);
+    }
+    public function riwayat_penyakit()
+    {
+        return $this->hasMany(RiwayatPenyakit::class);
     }
 }

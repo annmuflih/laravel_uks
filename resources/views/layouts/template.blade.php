@@ -38,7 +38,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-stethoscope fa-2x"></i>
                 </div>
-                <div class="mx-3 sidebar-brand-text">UKS</div>
+                <div class="mx-3 sidebar-brand-text">Klinik Muflih</div>
             </a>
 
             @include('layouts.menu')
@@ -135,7 +135,7 @@
             <footer class="mt-4 bg-white sticky-footer">
                 <div class="container my-auto">
                     <div class="my-auto text-center copyright">
-                        <span>copyright &copy; UKS -
+                        <span>copyright &copy; Klinik -
                             <script>
                             document.write(new Date().getFullYear());
                             </script>

@@ -56,10 +56,12 @@ Route::get('/detail-rekam-medis/{id_pasien}', [RekamMedisController::class, 'det
 Route::get('/print-rekam-medis/{id_pasien}', [RekamMedisController::class, 'print'])->name('rekam-medis.print')->middleware('auth');
 Route::get('/cari-rekam-medis', [RekamMedisController::class, 'search'])->name('rekam-medis.search')->middleware('auth');
 
-Route::get('/rawat', [StatusController::class, 'index_rawat'])->middleware('auth');
+Route::get('/belum-rawat', [StatusController::class, 'index_belum_rawat'])->middleware('auth');
 Route::get('/rawat-jalan', [StatusController::class, 'index_rawat_jalan'])->middleware('auth');
+Route::get('/rawat-inap', [StatusController::class, 'index_rawat_inap'])->middleware('auth');
 Route::get('/dirujuk', [StatusController::class, 'index_dirujuk'])->middleware('auth');
 Route::get('/sembuh', [StatusController::class, 'index_sembuh'])->middleware('auth');
+Route::get('/batal-rawat', [StatusController::class, 'index_batal_rawat'])->middleware('auth');
 
 Route::get('/exportpasien', [PasienController::class, 'pasienExport'])->middleware('auth');
 Route::post('/importpasien', [PasienController::class, 'pasienImport'])->name('pasienImport')->middleware('auth');

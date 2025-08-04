@@ -15,18 +15,20 @@ class CreateDataSakitsTable extends Migration
     {
         Schema::create('data_sakit', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_petugas');
-            $table->foreignId('id_pasien');
-            $table->text('subject');
-            $table->string('tensi');
-            $table->string('suhu');
-            $table->string('nadi');
-            $table->string('SPO2');
-            $table->text('assesment');
-            $table->text('planning');
-            $table->text('terapi');
-            $table->string('kategori_penyakit');
-            $table->enum('status_pasien', ['Rawat', 'Rawat Jalan','Dirujuk','Sembuh']);
+            $table->string('berat_badan')->nullable();
+            $table->string('tinggi_badan')->nullable();
+            $table->string('keluhan')->nullable();
+            $table->string('tensi')->nullable();
+            $table->string('suhu')->nullable();
+            $table->string('nadi')->nullable();
+            $table->string('golongan_darah')->nullable();
+            $table->string('spo2')->nullable();
+            $table->string('alergi')->nullable();
+            $table->string('perkiraan_penyakit')->nullable();
+            $table->enum('status_pasien', ['Belum Rawat', 'Rawat Jalan', 'Rawat Inap', 'Dirujuk', 'Sembuh', 'Batal Rawat']);
+            $table->foreignId('id_petugas')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_pasien')->constrained('pasien')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_obat')->constrained('obat')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

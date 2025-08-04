@@ -33,9 +33,8 @@ Rekam Medis
                             <tr class="text-center">
                                 <th>ID Rekam Medis</th>
                                 <th>Nama Pasien</th>
-                                <th>Tanggal Lahir</th>
                                 <th>Jenis Kelamin</th>
-                                <th>Jabatan</th>
+                                <th>Usia</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -44,9 +43,8 @@ Rekam Medis
                             <tr class="text-center">
                                 <td>RM-{{$row->id}}</td>
                                 <td>{{$row->nama_pasien}}</td>
-                                <td>{{$row->tanggal_lahir}}</td>
                                 <td>{{$row->jenis_kelamin}}</td>
-                                <td>{{$row->jabatan->nama_jabatan}}</td>
+                                <td>{{$row->usia}}</td>
                                 <td>
                                     <a href="{{route('rekam-medis.detail', $row->id)}}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                 </td>

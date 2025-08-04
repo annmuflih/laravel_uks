@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
 @section('tab')
-Rawat
+Batal Rawat
 @endsection
 
 @section('title')
-Rawat
+Batal Rawat
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@ Rawat
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Pasien Dirawat
+                    Pasien Batal Rawat
                     {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a> --}}
                 </div>
                 <div class="card-body">
@@ -24,7 +24,7 @@ Rawat
                                 <th>No.</th>
                                 <th>Nama Pasien</th>
                                 <th>Keluhan</th>
-                                <th>Tindakan</th>
+                                <th>Obat</th>
                                 <th>Status Pasien</th>
                                 <th>Diupdate</th>
                             </tr>
@@ -34,7 +34,7 @@ Rawat
                             <tr class="text-center">
                                 <td>{{$loop->iteration + ($data_sakit->perpage() * ($data_sakit->currentpage() -1)) }}</td>
                                 <td>{{$row->pasien->nama_pasien}}</td>
-                                <td>{{$row->keluhan}}</td>
+                                <td>{{$row->obat->nama_obat}}</td>
                                 <td>{{$row->tindakan}}</td>
                                 <td>
                                     <span class="badge bg-warning" style="color: white">{{$row->status_pasien}}</span>

@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
 @section('tab')
-Dirujuk
+Rawat Inap
 @endsection
 
 @section('title')
-Dirujuk
+Rawat Inap
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@ Dirujuk
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    Pasien Dirujuk
+                    Pasien Rawat Inap
                     {{-- <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i class="fa fa-plus"></i> Tambah</a> --}}
                 </div>
                 <div class="card-body">
@@ -37,7 +37,7 @@ Dirujuk
                                 <td>{{$row->keluhan}}</td>
                                 <td>{{$row->obat->nama_obat}}</td>
                                 <td>
-                                    <span class="badge bg-danger" style="color: white">{{$row->status_pasien}}</span>
+                                    <span class="badge bg-primary" style="color: white">{{$row->status_pasien}}</span>
                                 </td>
                                 <td>{{$row->updated_at->format('d-m-y H:m:s')}}</td>
                             </tr>

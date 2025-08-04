@@ -8,6 +8,7 @@ use App\Models\RekamMedis;
 use App\Models\DataSakit;
 use App\Models\KategoriPenyakit;
 use App\Models\NamaKategoriPenyakit;
+use App\Models\Obat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,11 +22,10 @@ class DataSakitController extends Controller
     public function index()
     {
         $data_sakit = DataSakit::orderBy('updated_at', 'desc')->paginate(10);
-        $petugas = Petugas::all();
         $pasien = Pasien::all();
-        $namaKategoriPenyakits = NamaKategoriPenyakit::all();
-        return view('data_sakit.index', compact('data_sakit','pasien','petugas', 'namaKategoriPenyakits'));
-
+        $petugas = Petugas::all();
+        $obat = Obat::all();
+        return view('data_sakit.index', compact('data_sakit', 'pasien', 'petugas', 'obat'));
     }
 
     /**
@@ -46,40 +46,24 @@ class DataSakitController extends Controller
      */
     public function store(Request $request)
     {
-        // $input = $request->all();
-        // DataSakit::create($input);
-
-        // DataSakit::create([
-        //     'id_pasien' => $request->id_pasien,
-        //     'subject' => $request->subject,
-        //     'tensi' => $request->tensi,
-        //     'suhu' => $request->suhu,
-        //     'nadi' => $request->nadi,
-        //     'SPO2' => $request->SPO2,
-        //     'assesment' => $request->assesment,
-        //     'planning' => $request->planning,
-        //     'terapi' => $request->terapi,
-        //     'kategori_penyakit' => json_encode($request->kategori_penyakit),
-        //     'status_pasien' => $request->status_pasien,
-        //     'id_petugas' => $request->id_petugas,
-        // ]);
-
         $datasakit = new DataSakit;
         $datasakit->id_pasien = $request->id_pasien;
-        $datasakit->subject = $request->subject;
+        $datasakit->berat_badan = $request->berat_badan;
+        $datasakit->tinggi_badan = $request->tinggi_badan;
+        $datasakit->keluhan = $request->keluhan;
         $datasakit->tensi = $request->tensi;
         $datasakit->suhu = $request->suhu;
         $datasakit->nadi = $request->nadi;
-        $datasakit->SPO2 = $request->SPO2;
-        $datasakit->assesment = $request->assesment;
-        $datasakit->planning = $request->planning;
-        $datasakit->terapi = $request->terapi;
-        $datasakit->kategori_penyakit = json_encode($request->kategori_penyakit);
+        $datasakit->golongan_darah = $request->golongan_darah;
+        $datasakit->spo2 = $request->spo2;
+        $datasakit->alergi = $request->alergi;
+        $datasakit->perkiraan_penyakit = $request->perkiraan_penyakit;
+        $datasakit->id_obat = $request->id_obat;
         $datasakit->status_pasien = $request->status_pasien;
         $datasakit->id_petugas = $request->id_petugas;
-        return redirect('/data-sakit');
 
-        dd($request->all());
+        $datasakit->save();
+        return redirect('/data-sakit');
     }
 
     /**
@@ -103,13 +87,14 @@ class DataSakitController extends Controller
      */
     public function edit($id)
     {
-        if(auth()->user()->role == 'visitor'){
+        if (auth()->user()->role == 'visitor') {
             abort(403);
         }
         $data_sakit = DataSakit::find($id);
         $pasien = Pasien::all();
         $petugas = Petugas::all();
-        return view('data_sakit.edit',compact('data_sakit','pasien','petugas'));
+        $obat = Obat::all();
+        return view('data_sakit.edit', compact('data_sakit', 'pasien', 'petugas','obat'));
     }
 
     /**
@@ -123,14 +108,17 @@ class DataSakitController extends Controller
     {
         $data_sakit = DataSakit::find($id);
         $data_sakit->update([
-            'subject' => $request->subject,
+            'berat_badan' => $request->berat_badan,
+            'tinggi_badan' => $request->tinggi_badan,
+            'keluhan' => $request->keluhan,
             'tensi' => $request->tensi,
             'suhu' => $request->suhu,
             'nadi' => $request->nadi,
-            'SPO2' => $request->SPO2,
-            'assesment' => $request->assesment,
-            'planning' => $request->planning,
-            'terapi' => $request->terapi,
+            'golongan_darah' => $request->golongan_darah,
+            'spo2' => $request->spo2,
+            'alergi' => $request->alergi,
+            'perkiraan_penyakit' => $request->perkiraan_penyakit,
+            'id_obat' => $request->id_obat,
             'status_pasien' => $request->status_pasien,
         ]);
         return redirect('/data-sakit');

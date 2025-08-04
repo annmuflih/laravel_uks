@@ -16,12 +16,7 @@
                     <div class="card-header">
                         <a href="javascript:void(0)" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i
                                 class="fa fa-plus"></i> Upload</a>
-                        {{-- <a href="/exportpasien" class="btn btn-warning"><i class="fa fa-print"></i> Export</a>
-                    <form action="/importpasien" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" name="file" required>
-                        <input type="submit" class="btn btn-danger" value="Import to User">
-                    </form> --}}
+
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -29,7 +24,6 @@
                                 <tr class="text-center">
                                     <th>No.</th>
                                     <th>Nama</th>
-                                    <th>Jabatan</th>
                                     <th>Status</th>
                                     <th>Diupload</th>
                                     <th>Action</th>
@@ -39,13 +33,14 @@
                                 @foreach ($mcu as $row)
                                     <tr class="text-center">
                                         <td>{{ $loop->iteration + $mcu->perpage() * ($mcu->currentpage() - 1) }}</td>
-                                        <td>{{ $row->nama }}</td>
-                                        <td>{{ $row->jabatan->nama_jabatan }}</td>
+                                        <td>{{ $row->pasien->nama ?? '-' }}</td>
                                         <td>
                                             @if ($row->status == 'Belum Terverifikasi')
-                                                <span class="badge bg-danger" style="color: white"> <i class="fas fa-times"></i> Belum Terverifikasi</span>
+                                                <span class="badge bg-danger" style="color: white"> <i
+                                                        class="fas fa-times"></i> Belum Terverifikasi</span>
                                             @else
-                                                <span class="badge bg-success" style="color: white"> <i class="far fa-check-circle"></i> Terverifikasi</span>
+                                                <span class="badge bg-success" style="color: white"> <i
+                                                        class="far fa-check-circle"></i> Terverifikasi</span>
                                             @endif
                                         </td>
                                         <td>{{ $row->created_at->format('d M Y') }}</td>
@@ -94,21 +89,11 @@
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="form-label">Nama</label>
-                                <input type="text" name="nama" value="{{ old('nama') }}" required='required'
-                                    class="form-control @error('nama') is-invalid @enderror">
-                                @error('nama')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Jabatan</label>
-                                <select name="id_jabatan" required="required" class="form-control">
-                                    <option value="">-- Pilih Jabatan --</option>
-                                    @foreach ($jabatan as $row)
-                                        <option value="{{ $row->id }}">{{ $row->nama_jabatan }}</option>
+                                <label class="form-label">Nama Pasien</label>
+                                <select name="pasien_id" class="form-control" required>
+                                    <option value="">-- Pilih Pasien --</option>
+                                    @foreach ($pasien as $p)
+                                        <option value="{{ $p->id }}">{{ $p->nama_pasien }}</option>
                                     @endforeach
                                 </select>
                             </div>

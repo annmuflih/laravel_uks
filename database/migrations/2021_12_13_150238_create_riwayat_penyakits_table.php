@@ -15,13 +15,8 @@ class CreateRiwayatPenyakitsTable extends Migration
     {
         Schema::create('riwayat_penyakit', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->date('tanggal_lahir');
-            $table->string('jenis_kelamin');
-            $table->string('tahun_ajaran');
-            $table->foreignId('id_jabatan')->nullable();
             $table->string('riwayat_penyakit');
-            $table->string('kategori_penyakit');
+            $table->foreignId('id_pasien')->constrained('pasien')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

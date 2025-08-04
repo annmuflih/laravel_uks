@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\RiwayatPenyakitImport;
 use App\Models\Jabatan;
+use App\Models\Pasien;
 use App\Models\RiwayatPenyakit;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,12 +19,11 @@ class RiwayatPenyakitController extends Controller
     public function index()
     {
         $riwayat_penyakit = RiwayatPenyakit::orderBy('created_at', 'desc')->paginate(10);
-        $jabatan = Jabatan::all();
-        // return dd($pasien, $jabatan);
-        return view('riwayat_penyakit.index', compact('riwayat_penyakit', 'jabatan'));
+        $pasien = Pasien::all();
+        return view('riwayat_penyakit.index', compact('riwayat_penyakit', 'pasien'));
     }
 
-    public function riwayatPenyakitImport (Request $request)
+    public function riwayatPenyakitImport(Request $request)
     {
         $file = $request->file('file');
         Excel::import(new RiwayatPenyakitImport, $file);
@@ -48,8 +48,16 @@ class RiwayatPenyakitController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        RiwayatPenyakit::create($input);
+        $request->validate([
+            'riwayat_penyakit' => 'required|string|max:255',
+            'id_pasien' => 'required|exists:pasien,id',
+        ]);
+
+        // Simpan ke database
+        RiwayatPenyakit::create([
+            'riwayat_penyakit' => $request->riwayat_penyakit,
+            'id_pasien' => $request->id_pasien,
+        ]);
         return redirect('/riwayat-penyakit');
     }
 
@@ -61,7 +69,7 @@ class RiwayatPenyakitController extends Controller
      */
     public function show($id)
     {
-        $riwayat_penyakit = RiwayatPenyakit::find($id);
+        $riwayat_penyakit = RiwayatPenyakit::with('pasien')->findOrFail($id);
         return view('riwayat_penyakit.detail', compact('riwayat_penyakit'));
     }
 
@@ -73,9 +81,9 @@ class RiwayatPenyakitController extends Controller
      */
     public function edit($id)
     {
-        $riwayat_penyakit = RiwayatPenyakit::find($id);
-        $jabatan = Jabatan::all();
-        return view('riwayat_penyakit.edit', compact('riwayat_penyakit','jabatan'));
+        $riwayat_penyakit = RiwayatPenyakit::findOrFail($id);
+        $pasien = Pasien::all();
+        return view('riwayat_penyakit.edit', compact('riwayat_penyakit', 'pasien'));
     }
 
     /**
@@ -87,10 +95,16 @@ class RiwayatPenyakitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $riwayat_penyakit = RiwayatPenyakit::find($id);
+        $request->validate([
+            'riwayat_penyakit' => 'required|string|max:255',
+            'id_pasien' => 'required|exists:pasien,id',
+        ]);
 
-        $input = $request->all();
-        $riwayat_penyakit->update($input);
+        $riwayat_penyakit = RiwayatPenyakit::findOrFail($id);
+        $riwayat_penyakit->update([
+            'riwayat_penyakit' => $request->riwayat_penyakit,
+            'id_pasien' => $request->id_pasien,
+        ]);
         return redirect('/riwayat-penyakit');
     }
 
@@ -102,7 +116,7 @@ class RiwayatPenyakitController extends Controller
      */
     public function destroy($id)
     {
-        $riwayat_penyakit = RiwayatPenyakit::find($id);
+        $riwayat_penyakit = RiwayatPenyakit::findOrFail($id);
         $riwayat_penyakit->delete();
         return back();
     }

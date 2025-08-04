@@ -24,7 +24,7 @@ Sembuh
                                 <th>No.</th>
                                 <th>Nama Pasien</th>
                                 <th>Keluhan</th>
-                                <th>Tindakan</th>
+                                <th>Obat</th>
                                 <th>Status Pasien</th>
                                 <th>Diupdate</th>
                             </tr>
@@ -35,7 +35,7 @@ Sembuh
                                 <td>{{$loop->iteration + ($data_sakit->perpage() * ($data_sakit->currentpage() -1)) }}</td>
                                 <td>{{$row->pasien->nama_pasien}}</td>
                                 <td>{{$row->keluhan}}</td>
-                                <td>{{$row->tindakan}}</td>
+                                <td>{{$row->obat->nama_obat}}</td>
                                 <td>
                                     <span class="badge bg-success" style="color: white">{{$row->status_pasien}}</span>
                                 </td>
